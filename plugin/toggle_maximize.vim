@@ -117,7 +117,7 @@ function! s:DoMaximization()
   endif
 endfunction
 
-function! s:ToggleMaximize()
+function! ToggleMaximize()
   "call ToggleMaximizeHorizontally()
   "call ToggleMaximizeVertically()
   " We can't just call the toggle functions for each axis in turn, because
@@ -149,13 +149,13 @@ function! s:ToggleMaximize()
 
 endfunction
 
-function! s:ToggleMaximizeVertically()
+function! ToggleMaximizeVertically()
   call s:RestoreLayout()
   let s:isToggledVertically = 1 - s:isToggledVertically
   call s:DoMaximization()
 endfunction
 
-function! s:ToggleMaximizeHorizontally()
+function! ToggleMaximizeHorizontally()
   call s:RestoreLayout()
   let s:isToggledHorizontally = 1 - s:isToggledHorizontally
   call s:DoMaximization()
@@ -166,25 +166,3 @@ endfunction
 function! RestoreLayout()
   call s:RestoreLayout()
 endfunction
-
-" == Keymaps ==
-
-nnoremap  <silent> <C-F> :call <SID>ToggleMaximize()<Enter>
-inoremap <silent> <C-F> <Esc>:call <SID>ToggleMaximize()<Enter>a
-nnoremap  <silent> <C-\> :call <SID>ToggleMaximize()<Enter>
-inoremap <silent> <C-\> <Esc>:call <SID>ToggleMaximize()<Enter>a
-"nnoremap  <silent> <C-G> :call <SID>ToggleMaximize()<Enter>
-"inoremap <silent> <C-G> <Esc>:call <SID>ToggleMaximize()<Enter>a
-"nnoremap  <silent> <C-Z> :call <SID>ToggleMaximize()<Enter>
-"inoremap <silent> <C-Z> <Esc>:call <SID>ToggleMaximize()<Enter>a
-
-nnoremap  <silent> <C-V> :call <SID>ToggleMaximizeVertically()<Enter>
-nnoremap  <silent> <C-H> :call <SID>ToggleMaximizeHorizontally()<Enter>
-" We will not override Ctrl-V or Ctrl-H in Insert mode; Ctrl-V is too useful,
-" and Ctrl-H might be what some systems see when the user presses Backspace.
-"inoremap <silent> <C-V> <Esc>:call <SID>ToggleMaximizeVertically()<Enter>a
-"inoremap <silent> <C-H> <Esc>:call <SID>ToggleMaximizeHorizontally()<Enter>a
-
-"" Does not work:
-"nnoremap <silent> <C-Enter> :call <SID>ToggleMaximize()<Enter>
-
